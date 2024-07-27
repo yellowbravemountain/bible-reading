@@ -1,0 +1,20 @@
+{
+    "manifest_version": 3,
+    "name": "Random Bible Redirect",
+    "version": "1.0",
+    "description": "Redirects the first link you visit each day to a random Bible chapter on Bible Gateway.",
+    "permissions": [
+        "webNavigation",
+        "activeTab",
+        "storage",
+        "notifications"
+    ],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "action": {
+        "default_icon": "bible.png",
+      "default_popup": "popup.html"
+    }
+  }
+  

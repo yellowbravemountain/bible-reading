@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Redirection Countdown</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .countdown {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    .stop-button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+    <h1>Redirection Countdown</h1>
+    <div class="countdown" id="countdown">30 seconds remaining</div>
+    <button class="stop-button" id="stop-button">Stop Redirection</button>
+  
+    <script>
+      chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+        if (message.message === "countdownComplete") {
+          document.getElementById("countdown").textContent = "0 seconds remaining";
+          document.getElementById("stop-button").style.display = "block";
+  
+          document.getElementById("stop-button").addEventListener("click", () => {
+            chrome.runtime.sendMessage({ message: "stopRedirection" });
+          });
+        }
+      });
+    </script>
+  </body>
+  </html>
